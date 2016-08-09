@@ -63,14 +63,14 @@ while line:
         if str(filenames).find(".cert") != -1: # 하위 파일 중에 .cert가 있으면
             money=0 # 피해 금액 변수
             filename = filenames[0] # 파일 이름 처리
-            certnum = certnum + 1 # 인증서 피해량 + 1
             certfile = open(dirp+"\\"+filename, "rb") # 인증서 파일 열고
             certline = certfile.readline() # 한 줄 읽기
 
             try:
                 certcon = int(str(b64(certline)).decode('utf-8')[9:-5]) 
                 # 인증서 내용 읽어서 b64 디코드 하고 숫자만 뽑아내서
-                money = certcon # 피해 금액 변수에 대입
+                money = certcon # 피해 금액 변수에 대입                
+                certnum = certnum + 1 # 인증서 피해량 + 1
             except:
                 pass # 오류 나면 패스
 
